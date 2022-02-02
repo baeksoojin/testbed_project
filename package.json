@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "firebase": "^9.6.5",
+    "fs": "^0.0.1-security",
+    "ip": "^1.1.5",
+    "os": "^0.1.2",
+    "shortid": "^2.2.8",
+    "websocket": "^1.0.34"
+  }
+}
