@@ -99,6 +99,5 @@ require('firebase/compat/database');//database사용
 2. firebase -> react app에서 count (객체 카운팅 변수값) 출력
 <img width="1475" alt="스크린샷 2022-02-09 오전 2 06 00" src="https://user-images.githubusercontent.com/74058047/153046515-3d46ed60-0b70-4319-b175-45252a229a11.png">
 
-
-
- 
+3. 실행영상
+[]: https://www.youtube.com/watch?v=AzPgHb8DpFw
