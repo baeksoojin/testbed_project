@@ -1,27 +1,46 @@
 # testbed_project
 
 ## 1. FMCW RADAR 센서 데이터 처리 (websocket)방식
-#### [websocket방식]: https://www.notion.so/radar-bb12b65437a84520a43259a163288164
 
-## 2. FMCW RADAR 센서 데이터 처리 (mqtt)방식
+#### 1-1. wsc.js를 통해 testbed서버에서 radar센서 데이터를 받아서 firebase에 저장
 
-#### 2-1. mqtt.js를 통해 testbed서버에서 radar의 실시간 데이터를 불러오기
+###### npm install
+- package.json 경로에서
+``` c
+npm i
+```
+- websocket 방식
+>> npm i fs;
+>> npm i os;
+>> npm i ip;
+>> npm i websocket;
+>> npm i shortip;
 
-###### npm i ( testbed_project폴더 경로에서 진행)
-- npm i fs;
-- npm i mqtt;
-- npm i util;
-- npm i ip;
+- firebase 사용
+>> npm i firebase
 
 ###### 사용자 등록 및 testbed ip, port번호 입력
-- btsuserid = USERID ;  // 테스트베드에 등록된 사용자입니다.
-- host: "210.94.199.225",    //  테스트베드 IP입니다.
-- port: "1883",    //  테스트베드 port입니다.
+wsc.js
+- usebtswshost         = "210.94.199.225";    //  테스트베드 IP입니다.
+- usebtswsport         = "3233";    //  테스트베드 port입니다.
+- usebtswslocaluserid  = USERID;    //  테스트베드에 등록된 사용자입니다.
 
-#### 2-2. firebase에 radar 데이터 저장
-testbed실이 아닌 외부에서 접속을 하기 위해서, testbed실에서 불러온 데이터를 활용해 타이머를 설정해 루프를 돌리며 진행
+###### wsc.js실행
 
-###### SaveData.js실행
+>> 명령어
+- websocket통신을 실행
+``` c
+>> cd radar
+>> node wsc
+```
+
+>> 코드설명
+- firebase realtimeDB이용
+``` c
+var firebase = require('firebase/compat/app');
+require('firebase/compat/database');//database사용
+```
+
 - count 속성을 추가해 객체 카운팅 결과를 jsonObj에 저장
 ``` c
     radar_data['m2m:dbg']['message']['count'] = radar_data['m2m:dbg'].message.SenValue.length; 
@@ -32,17 +51,20 @@ testbed실이 아닌 외부에서 접속을 하기 위해서, testbed실에서 �
     firebaseDB.ref('/').child('data').push(message);
 ```
 
-#### 2-3. 사용자가 버튼을 클릭하면 객체카운팅 결과 보여주기
+#### 1-2. 사용자가 버튼을 클릭하면 객체카운팅 결과 보여주기
 
 
 ###### ShowData.js실행
 
-- count 속성을 추가해 객체 카운팅 결과를 jsonObj에 저장
+>> 명령어
 ``` c
-radar_data['m2m:dbg']['message']['count'] = radar_data['m2m:dbg'].message.SenValue.length; 
+>> cd testbed
+>> npm start
 ```
 
-- firebase에 저장된 객체카운팅 결과를 cnt 변수에 저장
+>> 코드설명
+
+- firebase에 저장된 객체카운팅 결과를 가져와 cnt 변수에 저장
 ``` c
     const data = firebaseDB.ref('/data')
     .once('value', function (snap) {
@@ -66,17 +88,17 @@ radar_data['m2m:dbg']['message']['count'] = radar_data['m2m:dbg'].message.SenVal
   }
 ```
 
-#### 2-4. 서버실행
+#### 2. 실행화면
 
 ###### cd testbed -> npm start
 
-1. 버튼 클릭전
-<img width="902" alt="스크린샷 2022-02-07 오후 6 39 04" src="https://user-images.githubusercontent.com/74058047/152772132-499e5d7c-a5d9-4f4a-a9c7-9d4585dca4db.png">
+1. testbed -> firebase
+<img width="1433" alt="스크린샷 2022-02-09 오전 1 58 36" src="https://user-images.githubusercontent.com/74058047/153045897-923d68fb-5dcc-4c24-aa02-7bf199e281c7.png">
+[참고] 해당사진은 radar센서에 객체가 인식되지 않을 때, ready상태에서 임의로 결과를 넣어주고 돌린 결과입니다. 따라서 객체 인식의 경우를 test하고 싶다면 141-150줄을 주석처리후 테스트를 진행하면 됩니다.
 
-2. 버튼 클릭 후 
-<img width="900" alt="스크린샷 2022-02-07 오후 6 39 13" src="https://user-images.githubusercontent.com/74058047/152772164-a0247521-f9dc-47cb-aefe-e6e2f2193232.png">
+2. firebase -> react app에서 count (객체 카운팅 변수값) 출력
+<img width="1475" alt="스크린샷 2022-02-09 오전 2 06 00" src="https://user-images.githubusercontent.com/74058047/153046515-3d46ed60-0b70-4319-b175-45252a229a11.png">
 
-[참고] 해당사진은 무한루프를 돌리기 전 하나의 js파일에서 적용시켜본 캡처본입니다.
-#### [mqtt방식]: https://www.notion.so/mqtt-5a30c72687174bdfa0ca63c57da0feb1
+
 
  
