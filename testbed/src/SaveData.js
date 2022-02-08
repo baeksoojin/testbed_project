@@ -1,16 +1,11 @@
 import React,{useState} from 'react';
 import { firebaseDB } from './firebase';
-import Wsc from './radar/wsc';
-// import MQTT from './radar/mqtt';
 
 const SaveData = () =>{
 
     const save = () =>{
-        console.log('testbed실이 아닌 곳에서');
+        console.log('testbed서버 통신이 잘 이루어지지 않을 떄 사용. ');
     
-        //데이터셋을 불러와서 실시간으로 넣는 코드
-        // const radar_data = MQTT(); => 학교 밖에서는 안 됨.
-
         //------------------------------------샌서 데이터 불러오기와서 가공후 firebase realtimeDB에 저장----------------------------------------------
 
         const radar_data = {

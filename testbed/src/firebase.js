@@ -1,4 +1,3 @@
-//src/service/firebase.js
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';//auth사용
 import 'firebase/compat/database';//database사용
