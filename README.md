@@ -9,15 +9,17 @@
 ``` c
 npm i
 ```
-- websocket 방식
+- websocket 방식<br>
+```
 >> npm i fs;
 >> npm i os;
 >> npm i ip;
 >> npm i websocket;
 >> npm i shortip;
+```
 
-- firebase 사용
->> npm i firebase
+- firebase 사용<br>
+`npm i firebase`
 
 ###### 사용자 등록 및 testbed ip, port번호 입력
 wsc.js
@@ -27,14 +29,14 @@ wsc.js
 
 ###### wsc.js실행
 
->> 명령어
+1. 명령어
 - websocket통신을 실행
 ``` c
 >> cd radar
 >> node wsc
 ```
 
->> 코드설명
+2. 코드설명
 - firebase realtimeDB이용
 ``` c
 var firebase = require('firebase/compat/app');
@@ -56,13 +58,13 @@ require('firebase/compat/database');//database사용
 
 ###### ShowData.js실행
 
->> 명령어
+1. 명령어
 ``` c
 >> cd testbed
 >> npm start
 ```
 
->> 코드설명
+2. 코드설명
 
 - firebase에 저장된 객체카운팅 결과를 가져와 cnt 변수에 저장
 ``` c
@@ -100,4 +102,16 @@ require('firebase/compat/database');//database사용
 <img width="1475" alt="스크린샷 2022-02-09 오전 2 06 00" src="https://user-images.githubusercontent.com/74058047/153046515-3d46ed60-0b70-4319-b175-45252a229a11.png">
 
 3. 실행영상
-[]: https://www.youtube.com/watch?v=AzPgHb8DpFw
+https://www.youtube.com/watch?v=AzPgHb8DpFw
+
+4. 활용한 프로젝트
+
+- 깃허브 
+https://github.com/baeksoojin/FindSmartHospital<br>
+radar sensor를 활용한 병원 대기실 객체탐지 및 예약관리 시스템 활용<br>
+
+- 동국대학교 TESTBED 해커톤<br>
+    ![image](https://user-images.githubusercontent.com/74058047/216094761-9ba89e8b-c30b-4ff6-b93e-80287efeceac.png)
+    ![image](https://user-images.githubusercontent.com/74058047/216094876-db0385c4-798d-450a-b3f8-d84614304e3f.png)
+
+결과 : 서비스아이디어상 수상🎖
