@@ -2,7 +2,7 @@
 
 ## 1. FMCW RADAR 센서 데이터 처리 (websocket)방식
 
-#### 1-1. wsc.js를 통해 testbed서버에서 radar센서 데이터를 받아서 firebase에 저장
+#### wsc.js를 통해 testbed서버에서 radar센서 데이터를 받아서 firebase에 저장
 
 ###### npm install
 - package.json 경로에서
@@ -53,10 +53,10 @@ require('firebase/compat/database');//database사용
     firebaseDB.ref('/').child('data').push(message);
 ```
 
-#### 1-2. 사용자가 버튼을 클릭하면 객체카운팅 결과 보여주기
+## 2. 사용자가 버튼을 클릭하면 객체카운팅 결과 보여주기
 
 
-###### ShowData.js실행
+#### ShowData.js실행
 
 1. 명령어
 ``` c
@@ -90,9 +90,8 @@ require('firebase/compat/database');//database사용
   }
 ```
 
-#### 2. 실행화면
+## 3. 실행화면
 
-###### cd testbed -> npm start
 
 1. testbed -> firebase
 <img width="1433" alt="스크린샷 2022-02-09 오전 1 58 36" src="https://user-images.githubusercontent.com/74058047/153045897-923d68fb-5dcc-4c24-aa02-7bf199e281c7.png">
